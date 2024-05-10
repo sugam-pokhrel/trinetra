@@ -1,3 +1,4 @@
+
 import React from 'react'
 import Navbar from './components/Navbar/Navbar'
 
@@ -8,6 +9,10 @@ function page() {
       
     </div>
   )
+
+export default function Home() {
+  return <main> </main>;
+
 }
 
-export default page
+export default page;
