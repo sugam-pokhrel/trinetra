@@ -9,16 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "framer-motion": "^11.1.9",
-    "lucide-react": "^0.378.0",
-    "next": "14.2.3",
-=======
     "@prisma/client": "^5.13.0",
     "mongodb": "^6.6.1",
     "next": "14.2.3",
     "prisma": "^5.13.0",
->>>>>>> 4976624a9e5c873cfef8c10df0a84742f5135d35
     "react": "^18",
     "react-dom": "^18"
   },
