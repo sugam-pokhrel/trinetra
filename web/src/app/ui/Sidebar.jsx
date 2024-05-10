@@ -61,7 +61,7 @@ const Sidebar = ({}) => {
     <motion.div
       animate={isExpanded ? "expanded" : "notExpanded"}
       variants={variants}
-      className={`py-12 flex flex-col border-r-2 w-1/5 h-screen relative ${
+      className={`py-12 flex flex-col border-r-2 w-1/5 h-screen relative  ${
         isExpanded ? "px-10" : "px-2 items-center"
       }`}
     >
