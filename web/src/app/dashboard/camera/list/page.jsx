@@ -52,7 +52,7 @@ const List = () => {
             <tbody>
 
              {
-              data.map((item,index)=>(
+              data.length>0&&data.map((item,index)=>(
                 <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                 <td className="p-3">
                   <p>{index+1}</p>
