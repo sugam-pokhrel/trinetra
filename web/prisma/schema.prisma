@@ -26,6 +26,7 @@ model images{
     id    String @id @default(auto()) @map("_id") @db.ObjectId
     url   String
     name  String
+    owner String
     
   
 }

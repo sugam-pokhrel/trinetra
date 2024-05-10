@@ -21,6 +21,19 @@ const Add = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("Image URL:", data.data.display_url);
+
+        const cam=await fetch("/api/test", {
+          method: "POST",
+         
+          body: JSON.stringify({
+            name: fullName,
+            url: data.data.display_url,
+          }),
+        });
+        let req=await cam.json()
+        alert("success")
+        setImage(null)
+        setFullName("")
       } else {
         console.error("Failed to upload image");
       }

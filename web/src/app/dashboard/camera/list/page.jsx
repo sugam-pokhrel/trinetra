@@ -1,7 +1,22 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 
+import { useEffect } from "react";
 const List = () => {
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    fetch("/api/test", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {console.log(data.msg)
+        ;
+        setData(data.msg);
+      } );
+  }, []);
+
   return (
     <div className="pt-14 px-8 ">
       <ul className="flex space-x-2 rtl:space-x-reverse">
@@ -35,36 +50,27 @@ const List = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+
+             {
+              data.map((item,index)=>(
+                <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                 <td className="p-3">
-                  <p>1</p>
+                  <p>{index+1}</p>
                 </td>
                 <td className="p-3">
-                  <p>Yangsing Limbu</p>
-                </td>
-                <td className="p-3">
-                  <img
-                    className="h-[50px] w-[50px] "
-                    src="https://th.bing.com/th/id/OIP.rs6Fm8blvPf-4eUVzC0DdAAAAA?w=350&h=500&rs=1&pid=ImgDetMain"
-                    alt=""
-                  />
-                </td>
-              </tr>
-              <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
-                <td className="p-3">
-                  <p>1</p>
-                </td>
-                <td className="p-3">
-                  <p>Yangsing Limbu</p>
+                  <p>{item.name}</p>
                 </td>
                 <td className="p-3">
                   <img
                     className="h-[50px] w-[50px] "
-                    src="https://th.bing.com/th/id/OIP.rs6Fm8blvPf-4eUVzC0DdAAAAA?w=350&h=500&rs=1&pid=ImgDetMain"
+                    src={item.url}
                     alt=""
                   />
                 </td>
               </tr>
+              ))
+             }
+             
             </tbody>
           </table>
         </div>
