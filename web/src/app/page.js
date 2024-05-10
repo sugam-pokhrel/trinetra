@@ -8,11 +8,8 @@ function page() {
       <Navbar />
       
     </div>
-  )
+  )}
 
-export default function Home() {
-  return <main> </main>;
 
-}
 
 export default page;
