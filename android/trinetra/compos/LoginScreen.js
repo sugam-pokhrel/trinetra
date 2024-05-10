@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import asyncStorage from '@react-native-async-storage/async-storage';
 import { useRouter } from 'expo-router';
@@ -7,14 +7,16 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const router = useRouter();
 
+
+
   const handleLogin = () => {
   
     // You can add your login logic here, such as sending the email and password to your backend for authentication
     console.log('Email:', email);
     console.log('Password:', password);
 
-    if(email=='admin@gmail.com' && password=='admin'){
-      asyncStorage.setItem('user', email);
+    if(email=='admin@gmail.com' && password=='testapikey'){
+      asyncStorage.setItem('user', {email, password});
       setEmail('');
       setPassword('');
   
@@ -22,7 +24,7 @@ const LoginForm = () => {
     }else{
       alert('Invalid Credentials');
     }
-    // Reset the form after login attempt
+    
    
     
     
@@ -32,13 +34,13 @@ const LoginForm = () => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Enter Email"
+        placeholder="Enter your email address"
         value={email}
         onChangeText={(text) => setEmail(text)}
       />
       <TextInput
         style={styles.input}
-        placeholder="Enter Password"
+        placeholder="Enter your api key"
         secureTextEntry={true}
         value={password}
         onChangeText={(text) => setPassword(text)}
