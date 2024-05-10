@@ -1,15 +1,32 @@
-"use client";
+"use client"
 import Link from "next/link";
 import React, { useState } from "react";
 
 const Add = () => {
   const [fullName, setFullName] = useState("");
-  const [role, setRole] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
+
+    const formData = new FormData();
+    formData.append("fullName", fullName);
+    formData.append("image", image);
+
+    try {
+      const response = await fetch("https://api.imgbb.com/1/upload?key=dff3dba64b8b5dd6b1ed124b98ba6499", {
+        method: "POST",
+        body: formData,
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Image URL:", data.data.display_url);
+      } else {
+        console.error("Failed to upload image");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   return (
@@ -39,13 +56,7 @@ const Add = () => {
             onChange={(e) => setFullName(e.target.value)}
             className="w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
           />
-          <input
-            type="text"
-            placeholder="Role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            className="w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
-          />
+        
           <input
             type="file"
             onChange={(e) => setImage(e.target.files[0])}
