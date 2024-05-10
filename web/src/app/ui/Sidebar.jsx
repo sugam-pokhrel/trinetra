@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { signOut, useSession } from "next-auth/react";
 import {
   LayoutDashboard,
   Camera,
@@ -13,6 +14,7 @@ import RightArrow from "../../../public/rightArrow.svg";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 const navlinks = [
   {
@@ -45,19 +47,28 @@ const variants = {
 const Sidebar = ({}) => {
   const [activeNavlink, setActiveNavlink] = useState(0);
   const [isExpanded, setIsExpanded] = useState(true);
+  let router = usePathname();
+  router = router.split("/")[2];
+
+  useEffect(() => {
+    if (router === "dashboard" || !router) setActiveNavlink(0);
+    if (router === "analyitics") setActiveNavlink(1);
+    if (router === "images") setActiveNavlink(2);
+    if (router === "help-center") setActiveNavlink(3);
+  }, [router]);
 
   return (
     <motion.div
       animate={isExpanded ? "expanded" : "notExpanded"}
       variants={variants}
-      className={`py-12 flex flex-col border-r-2 max-w-1/5 h-screen relative ${
+      className={`py-12 flex flex-col border-r-2 w-1/5 h-screen relative ${
         isExpanded ? "px-10" : "px-2 items-center"
       }`}
     >
       <Link href="/">
-        <div className="logo flex items-center space-x-2 text-3xl">
-          <span className="font-extrabold">T</span>
-          <span className={`  ${isExpanded ? "block" : "hidden"}`}>
+        <div className="logo flex items-center space-x-2">
+          <span className="text-3xl font-extrabold">T</span>
+          <span className={`text-3xl  ${isExpanded ? "block" : "hidden"}`}>
             {" "}
             TriNetra
           </span>
@@ -121,7 +132,10 @@ const Sidebar = ({}) => {
           </button>
         </Link>
 
-        <button className="p-2  bg-red-600 rounded text-white font-semibold">
+        <button
+          className="p-2  bg-red-600 rounded text-white font-semibold"
+          onClick={() => signOut()}
+        >
           <div className="flex space-x-3">
             <LogOut />
             <span
