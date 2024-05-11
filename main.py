@@ -3,9 +3,6 @@ import cv2
 from model import FaceEncode
 import pygame
 from pymongo import MongoClient
-from sugam import main
-
-main()
 
 app = Flask(__name__)
 
@@ -32,6 +29,7 @@ def gen_frames():
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 200), 4)
                 if name == "Unknown":
                     print("Unkown person detected")
+                    
                     unknown_sound.play()
                     cv2.waitKey(1000)
             ret, buffer = cv2.imencode('.jpg', frame)
