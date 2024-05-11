@@ -38,3 +38,8 @@ model count{
   owner   String
 
 }
+model log{
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  url        String
+  owner      String
+}

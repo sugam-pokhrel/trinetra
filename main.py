@@ -5,7 +5,16 @@ import requests
 from flask import Flask, render_template, Response
 from model import FaceEncode
 import pygame
+from sugam import main
 
+main()
+def send_data_to_server(imgbb_url, email):
+    data = {
+        "imgbb_url": imgbb_url,
+        "email": email
+    }
+    response = requests.post("http://localhost:3000/api/save", json=data)
+    return response.json()
 # Initialize Flask app
 app = Flask(__name__)
 
@@ -57,6 +66,12 @@ def gen_frames():
                     # Upload image to ImgBB
                     imgbb_url = upload_to_imgbb(image_path)
                     print("Image uploaded to ImgBB:", imgbb_url)
+
+                    send_data_to_server(imgbb_url, "shreejanpkota009@gmail.com")
+
+
+
+
                     snapshot_taken = True
                     cv2.waitKey(5000)
         ret, buffer = cv2.imencode('.jpg', frame)
