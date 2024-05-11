@@ -7,6 +7,12 @@ import Loading from "../ui/Loading";
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -21,12 +27,12 @@ const Dashboard = () => {
         <h1 className="text-black text-3xl font-extrabold m">
           Live detection player
         </h1>
-        <DigialWatch />
+        {isMounted && <DigialWatch />}
       </div>
 
       <div>
         {isLoading && (
-          <div>
+          <div className="mt-[100px]">
             <Loading />
           </div>
         )}

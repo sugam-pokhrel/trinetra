@@ -33,7 +33,10 @@ function Navbar() {
           className="logo flex items-center space-x-2"
           onClick={handleHomeClick}
         >
-          <span className={`text-3xl font-semibold`}> TriNetra</span>
+          <span className={`text-3xl font-semibold cursor-pointer`}>
+            {" "}
+            TriNetra
+          </span>
         </div>
       </div>
       <div className="flex space-x-4 justify-center items-center gap-10">
