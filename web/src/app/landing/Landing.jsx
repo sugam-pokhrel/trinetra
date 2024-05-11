@@ -1,7 +1,12 @@
+"use client"
 import React from "react";
+import { useRouter } from "next/navigation";
 
 function Landing() {
+    const router = useRouter();
+
   return (
+
     <div className="flex justify-center items-center ">
       <div className="h-[80vh] w-full my-10 max-w-[90vw] rounded-md text-black flex bg-black px-20 justify-center items-center">
         <div className="flex ">
@@ -19,7 +24,7 @@ function Landing() {
           <p className="text-1xl">
             Join the ThirdEye community today and step into a safer tomorrow!
           </p>
-          <button className="p-3 px-[15px] bg-gray-300 text-black rounded-md mt-5">
+          <button className="p-3 px-[15px] bg-gray-300 text-black rounded-md mt-5 " onClick={() => router.push("/login")}>
             Get Started
           </button>
         </div>
