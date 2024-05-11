@@ -24,7 +24,7 @@ export async function POST(request) {
 
     let prim=await prisma.log.create({
         data: {
-            owner: data.owner,
+            owner: data.email,
             url: data.imgbb_url
         }
         })
