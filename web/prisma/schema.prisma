@@ -26,7 +26,15 @@ model images{
     id    String @id @default(auto()) @map("_id") @db.ObjectId
     url   String
     name  String
-    owner String
+    index Int
+    owner String 
     
   
+}
+
+model count{
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  count   Int
+  owner   String
+
 }

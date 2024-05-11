@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response
 import cv2
 from model import FaceEncode
 import pygame
+from pymongo import MongoClient
 
 app = Flask(__name__)
 
