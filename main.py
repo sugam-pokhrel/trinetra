@@ -60,6 +60,7 @@ def gen_frames():
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 200), 4)
                 if name == "Unknown" and not snapshot_taken:
                     print("Unknown person detected")
+                   
                     unknown_sound.play()
                     image_path = os.path.join(detected_dir, f"unknown_person_{time.time()}.jpg")
                     cv2.imwrite(image_path, frame)
@@ -86,6 +87,7 @@ def index():
 
 @app.route('/video_feed')
 def video_feed():
+  
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 if __name__ == '__main__':

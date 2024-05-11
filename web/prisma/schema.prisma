@@ -54,12 +54,13 @@ model images {
   owner String
   url   String
 }
-
 model log {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  owner String
-  url   String
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  owner      String
+  url        String
+  created_at DateTime @default(now()) 
 }
+
 
 model notices {
   id          String @id @default(auto()) @map("_id") @db.ObjectId

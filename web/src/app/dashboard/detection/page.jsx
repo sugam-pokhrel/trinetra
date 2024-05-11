@@ -54,7 +54,8 @@ const Detection = () => {
                   </td>
 
                   <td className="p-3">
-                    <p>{item.createdAt ? item.createdAt : "01 Feb 2022"}</p>
+                    <p>{item.created_at
+                     ? item.created_at : "01 Feb 2022"}</p>
                   </td>
                 </tr>
               ))}
