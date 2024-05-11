@@ -7,6 +7,8 @@ import LoginForm from '../compos/LoginScreen'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 export default function index() {
 
+  const [user, setUser] = useState(null)
+
 
   useEffect(()=>{
     AsyncStorage.getItem('user').then((user)=>{

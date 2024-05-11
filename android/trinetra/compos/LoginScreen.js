@@ -15,8 +15,8 @@ const LoginForm = () => {
     console.log('Email:', email);
     console.log('Password:', password);
 
-    if(email=='admin@gmail.com' && password=='testapikey'){
-      asyncStorage.setItem('user', {email, password});
+    if(email=='shreejanpkota009@gmail.com' && password=='testapikey'){
+      asyncStorage.setItem('user', JSON.stringify({email, password}));
       setEmail('');
       setPassword('');
   
