@@ -4,8 +4,17 @@ from model import FaceEncode
 import pygame
 from pymongo import MongoClient
 from sugam import main
-
+import time
+import os
 main()
+
+detected_dir = "detected/"
+
+if not os.path.exists(detected_dir):
+    os.makedirs(detected_dir)
+
+snapshot_taken = False
+
 app = Flask(__name__)
 
 #loading the encoded imageess from the dir
@@ -29,15 +38,17 @@ def gen_frames():
                 y1, x2, y2, x1 = face_loc[0], face_loc[1], face_loc[2], face_loc[3]
                 cv2.putText(frame, name, (x1, y1 - 10), cv2.FONT_HERSHEY_DUPLEX, 1, (0, 0, 200), 2)
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 0, 200), 4)
-                if name == "Unknown":
+                if name == "Unknown" and not snapshot_taken:
                     print("Unkown person detected")
-                    
                     unknown_sound.play()
-                    cv2.waitKey(1000)
+                    cv2.imwrite(os.path.join(detected_dir, f"unknown_person_{time.time()}.jpg"), frame)
+                    snapshot_taken = True
+                    cv2.waitKey(5000)
             ret, buffer = cv2.imencode('.jpg', frame)
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        snapshot_taken = False
 # make the route in the port
 @app.route('/')
 def index():
