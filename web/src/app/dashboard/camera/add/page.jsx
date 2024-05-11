@@ -1,8 +1,11 @@
 "use client"
 import Link from "next/link";
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Add = () => {
+  const router = useRouter();
+
   const [fullName, setFullName] = useState("");
   const [image, setImage] = useState(null);
 
@@ -34,6 +37,7 @@ const Add = () => {
         alert("success")
         setImage(null)
         setFullName("")
+        router.push("/dashboard/camera/list")
       } else {
         console.error("Failed to upload image");
       }
