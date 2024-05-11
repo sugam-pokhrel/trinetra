@@ -15,7 +15,7 @@ pygame.init()
 unknown_sound = pygame.mixer.Sound(sound_file)
 
 def gen_frames():
-    cap = cv2.VideoCapture(1) # 1 for tyo webcam and 0 for the camera we can also pass the path for the certain video 
+    cap = cv2.VideoCapture(0) # 1 for tyo webcam and 0 for the camera we can also pass the path for the certain video 
     while True:
         success, frame = cap.read()
         if not success:
