@@ -3,7 +3,7 @@
     "name": "trinetra",
     "slug": "trinetra",
     "version": "1.0.0",
-    "scheme":"trinetra",
+    "scheme": "trinetra",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sugamf7.trinetra"
     },
     "android": {
       "adaptiveIcon": {
@@ -24,8 +25,41 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "extra": {
+      "oneSignalAppId": "8a8ded30-3e16-464f-ad0e-518f1dfa583d",
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "OneSignalNotificationServiceExtension",
+                  "bundleIdentifier": "com.sugamf7.trinetra.OneSignalNotificationServiceExtension",
+                  "entitlements": {
+                    "com.apple.security.application-groups": [
+                      "group.com.sugamf7.trinetra.onesignal"
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "24f10478-17e1-4755-a747-c443e1ea5941"
+      }
+    },
     "plugins": [
-      "expo-router"
-    ]
+      "expo-router",
+      [
+        "onesignal-expo-plugin",
+        {
+          "mode": "development"
+        }
+      ]
+    ],
+    "owner": "sugamf7"
   }
 }
