@@ -52,9 +52,9 @@ const Sidebar = ({}) => {
 
   useEffect(() => {
     if (router === "dashboard" || !router) setActiveNavlink(0);
-    if (router === "analyitics") setActiveNavlink(1);
-    if (router === "images") setActiveNavlink(2);
-    if (router === "help-center") setActiveNavlink(3);
+    if (router === "profile") setActiveNavlink(1);
+    if (router === "detection") setActiveNavlink(2);
+    if (router === "camera") setActiveNavlink(3);
   }, [router]);
 
   return (

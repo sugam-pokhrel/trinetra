@@ -23,14 +23,15 @@ const Dashboard = () => {
         </h1>
         <DigialWatch />
       </div>
-    
+
       <div>
-        {isLoading &&   <div>
-        <Loading />
-      </div>}
+        {isLoading && (
+          <div>
+            <Loading />
+          </div>
+        )}
         <iframe
           src="http://127.0.0.1:5000/video_feed"
-          frameborder="0"
           width="500px"
           height="375px"
           className="rounded-md shadow-lg"
