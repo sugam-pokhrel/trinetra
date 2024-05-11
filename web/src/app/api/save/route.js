@@ -11,6 +11,7 @@ export async function GET(request) {
       owner: session.user.email
     }
   })
+  console.log(session)
   console.log(data)
 
   return NextResponse.json({ msg: data })

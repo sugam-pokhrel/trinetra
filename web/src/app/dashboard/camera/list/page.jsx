@@ -6,8 +6,8 @@ import { useEffect } from "react";
 const List = () => {
   const [data, setData] = React.useState([]);
 
-  useEffect(() => {
-    fetch("/api/test", {
+  React.useEffect(() => {
+    fetch("/api/save", {
       method: "GET",
     })
       .then((res) => res.json())
