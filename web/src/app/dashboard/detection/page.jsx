@@ -10,8 +10,11 @@ const Detection = () => {
 
   useEffect(() => {
     fetch("/api/save")
-     .then((res) => res.json())
-     .then((res) => {setData(res.msg);console.log(res.msg)});
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res.msg);
+        console.log(res.msg);
+      });
   }, []);
   const router = useRouter();
   if (!session) {
@@ -33,38 +36,28 @@ const Detection = () => {
               <th className="p-3">S.N</th>
               <th className="p-3">Name</th>
               <th className="p-3">Photo</th>
-              <th className="p-3">Role</th>
               <th className="p-3">Last Seen</th>
             </tr>
           </thead>
           <tbody>
+            {data.length > 0 &&
+              data.map((item, index) => (
+                <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+                  <td className="p-3">
+                    <p>{item.id}</p>
+                  </td>
+                  <td className="p-3">
+                    <p>Intruder</p>
+                  </td>
+                  <td className="p-3">
+                    <img className="h-[50px] w-[50px] " src={item.url} alt="" />
+                  </td>
 
-          {data.length > 0 &&
-                data.map((item, index) => (
-            <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
-              <td className="p-3">
-                <p>{item.id}</p>
-              </td>
-              <td className="p-3">
-                <p>Intruder</p>
-              </td>
-              <td className="p-3">
-                <img
-                  className="h-[50px] w-[50px] "
-                  src={item.url}
-                  alt=""
-                />
-              </td>
-              <td className="p-3">
-                <p>danger</p>
-              </td>
-              <td className="p-3">
-                <p>{item.createdAt?item.createdAt:'01 Feb 2022'}</p>
-
-
-              </td>
-            </tr>
-          ))}
+                  <td className="p-3">
+                    <p>{item.createdAt ? item.createdAt : "01 Feb 2022"}</p>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

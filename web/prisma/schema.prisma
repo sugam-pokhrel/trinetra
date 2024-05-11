@@ -1,13 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client-js"
-
-  previewFeatures = ["mongodb"]
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
@@ -17,30 +10,77 @@ datasource db {
 
 model SecUser {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String @unique
-  name  String?
-
+  /// Field referred in an index, but found no data to define the type.
+  email Json?  @unique
 }
 
-model images{
-    id    String @id @default(auto()) @map("_id") @db.ObjectId
-    url   String
-    name  String
-    index Int
-    owner String 
-    
-  
+model Top {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
 }
 
-model count{
+model count {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
-  count   Int
-  owner   String
-
+  count Int
+  owner String
 }
+
+model emails {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  email String
+}
+
+model file {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model files {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  botIndex  BigInt
+  chunks    String
+  createdBy String
+  index     String
+  isLast    Boolean
+  link      String
+  name      String
+  size      String
+  type      String
+  uuid      String
+}
+
+model images {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  index Int
+  name  String
+  owner String
+  url   String
+}
+
 model log {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  url      String
-  owner    String
-  createdAt DateTime @default(now())
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  owner String
+  url   String
+}
+
+model notices {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  v           Int    @map("__v")
+  description String
+  imageUrl    String
+  title       String
+}
+
+model starred {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+}
+
+model tops {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  body      String @unique(map: "body_1")
+  /// Multiple data types found: String: 9.5%, DateTime (Date): 90.5% out of 21 sampled entries
+  createdAt Json
+  from      String
+  subject   String
+  to        String
+
+  @@index([createdAt], map: "createdAt_1")
 }

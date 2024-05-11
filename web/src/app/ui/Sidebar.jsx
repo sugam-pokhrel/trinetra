@@ -41,7 +41,7 @@ const navlinks = [
 
 const variants = {
   expanded: { width: "260px" },
-  notExpanded: { width: "5when0px" },
+  notExpanded: { width: "50px" },
 };
 
 const Sidebar = ({}) => {
