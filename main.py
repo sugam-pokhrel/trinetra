@@ -3,7 +3,9 @@ import cv2
 from model import FaceEncode
 import pygame
 from pymongo import MongoClient
+from sugam import main
 
+main()
 app = Flask(__name__)
 
 #loading the encoded imageess from the dir
