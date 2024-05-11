@@ -16,7 +16,7 @@ pygame.init()
 unknown_sound = pygame.mixer.Sound(sound_file)
 
 def gen_frames():
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1) # 1 for tyo webcam and 0 for the camera we can also pass the path for the certain video 
     while True:
         success, frame = cap.read()
         if not success:
@@ -35,7 +35,7 @@ def gen_frames():
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-
+# make the route in the port
 @app.route('/')
 def index():
     return render_template('index.html')  
