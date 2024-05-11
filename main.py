@@ -46,7 +46,7 @@ def upload_to_imgbb(image_path):
         return result.get("data", {}).get("url")
 
 def gen_frames():
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     snapshot_taken = False
     while True:
         success, frame = cap.read()
