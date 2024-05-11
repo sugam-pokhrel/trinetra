@@ -14,6 +14,7 @@ const Camera = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data.msg);
+        console.log(data.msg);
       });
   }, []);
   return (
