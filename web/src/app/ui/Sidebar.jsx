@@ -40,15 +40,27 @@ const navlinks = [
 ];
 
 const variants = {
-  expanded: { width: "20%" },
-  notExpanded: { width: "5%" },
+  expanded: { width: "260px" },
+  notExpanded: { width: "5when0px" },
 };
 
 const Sidebar = ({}) => {
   const [activeNavlink, setActiveNavlink] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(window.innerWidth > 600);
   let router = usePathname();
   router = router.split("/")[2];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsExpanded(window.innerWidth > 600);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (router === "dashboard" || !router) setActiveNavlink(0);
