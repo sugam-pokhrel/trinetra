@@ -22,11 +22,11 @@ const navlinks = [
     icon: LayoutDashboard,
     navlink: "/dashboard",
   },
-  {
-    name: "Profile",
-    icon: CircleUser,
-    navlink: "/dashboard/profile",
-  },
+  // {
+  //   name: "Profile",
+  //   icon: CircleUser,
+  //   navlink: "/dashboard/profile",
+  // },
   {
     name: "Detection",
     icon: ShieldQuestion,
