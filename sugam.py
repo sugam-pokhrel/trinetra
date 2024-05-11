@@ -33,7 +33,7 @@ def get_collection_count():
     return count
 def download_images_with_index_greater_than(count):
     # Get all documents with index greater than count
-    documents = newcoll.find({"index": {"$gt": count}, "owner": "sugamf7@gmail.com"})
+    documents = newcoll.find({"index": {"$gt": count}, "owner": "shreejanpkota009@gmail.com"})
 
     for document in documents:
         image_url = document['url']
