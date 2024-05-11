@@ -16,7 +16,7 @@ function Landing() {
           />
         </div>
         <div className="flex flex-col gap-3 px-10 text-white ">
-          <h1 className="text-4xl font-bold">Welcome to ThirdEye</h1>
+          <h1 className="text-4xl font-bold">Welcome to TriNetra</h1>
           <p className="text-2xl">
             Your Door Face Recognition System Solution!
           </p>
