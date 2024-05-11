@@ -4,6 +4,20 @@ import React from "react";
 
 import { useEffect } from "react";
 const List = () => {
+  let [data, setData] = React.useState([]);
+  useEffect(() => {
+    fetch("/api/test", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.msg);
+        console.log(data.msg);
+      });
+  }, []);
 
 
   return (
