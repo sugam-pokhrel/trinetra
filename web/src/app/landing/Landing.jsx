@@ -21,7 +21,7 @@ function Landing() {
             Your Door Face Recognition System Solution!
           </p>
           <p className="text-1xl">
-            Join the ThirdEye community today and step into a safer tomorrow!
+            Join the TriNetra community today and step into a safer tomorrow!
           </p>
           <button
             className="p-3 px-[15px] bg-gray-300 text-black rounded-md mt-5 hover:bg-gray-400"
