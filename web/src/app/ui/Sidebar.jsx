@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Camera,
   ShieldQuestion,
+  CircleUser,
   LogOut,
   Home,
 } from "lucide-react";
@@ -20,6 +21,11 @@ const navlinks = [
     name: "Dashboard",
     icon: LayoutDashboard,
     navlink: "/dashboard",
+  },
+  {
+    name: "Profile",
+    icon: CircleUser,
+    navlink: "/dashboard/profile",
   },
   {
     name: "Detection",
