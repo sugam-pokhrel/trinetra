@@ -9,7 +9,7 @@ export default async function DashboardLayout({ children }) {
     redirect("/login");
   }
   return (
-    <div class="flex">
+    <div className="flex">
       {!!session && (
         <div className="flex w-full">
           <Sidebar />
