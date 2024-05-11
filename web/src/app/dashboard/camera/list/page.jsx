@@ -4,18 +4,7 @@ import React from "react";
 
 import { useEffect } from "react";
 const List = () => {
-  const [data, setData] = React.useState([]);
 
-  React.useEffect(() => {
-    fetch("/api/save", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.msg);
-        setData(data.msg);
-      });
-  }, []);
 
   return (
     <div className="pt-14 px-8 ">

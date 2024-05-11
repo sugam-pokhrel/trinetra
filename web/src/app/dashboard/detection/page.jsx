@@ -1,10 +1,18 @@
 "use client";
 import React from "react";
+import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const Detection = () => {
   const { data: session } = useSession();
+  const [data, setData] = React.useState([]);
+
+  useEffect(() => {
+    fetch("/api/save")
+     .then((res) => res.json())
+     .then((res) => {setData(res.msg);console.log(res.msg)});
+  }, []);
   const router = useRouter();
   if (!session) {
     router.push("/login");
@@ -30,30 +38,33 @@ const Detection = () => {
             </tr>
           </thead>
           <tbody>
+
+          {data.length > 0 &&
+                data.map((item, index) => (
             <tr className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
               <td className="p-3">
-                <p>1</p>
+                <p>{item.id}</p>
               </td>
               <td className="p-3">
-                <p>Yangsing Limbu</p>
+                <p>Intruder</p>
               </td>
               <td className="p-3">
                 <img
                   className="h-[50px] w-[50px] "
-                  src="https://th.bing.com/th/id/OIP.rs6Fm8blvPf-4eUVzC0DdAAAAA?w=350&h=500&rs=1&pid=ImgDetMain"
+                  src={item.url}
                   alt=""
                 />
               </td>
               <td className="p-3">
-                <p>Family</p>
+                <p>danger</p>
               </td>
               <td className="p-3">
-                <p>01 Feb 2022</p>
+                <p>{item.createdAt?item.createdAt:'01 Feb 2022'}</p>
 
-                <p className="dark:text-gray-600">Tuesday</p>
+
               </td>
             </tr>
-            
+          ))}
           </tbody>
         </table>
       </div>
