@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import DigialWatch from "../components/Date/Date";
+import Loading from "../ui/Loading";
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,14 +23,17 @@ const Dashboard = () => {
         </h1>
         <DigialWatch />
       </div>
+    
       <div>
-        {isLoading && <div>Loading...</div>}
+        {isLoading &&   <div>
+        <Loading />
+      </div>}
         <iframe
           src="http://127.0.0.1:5000/video_feed"
           frameborder="0"
           width="500px"
           height="375px"
-          className="roundedrg"
+          className="rounded-md shadow-lg"
           style={{ display: isLoading ? "none" : "block" }}
         />
       </div>
