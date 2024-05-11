@@ -34,7 +34,7 @@ export async function POST(request) {
   let countuid = null;
 
   if (count === null) {
-    count = 0;
+    count = 1;
   } else {
     countuid = count.id;
     count = parseInt(count.count) + 1;
@@ -66,7 +66,7 @@ export async function POST(request) {
         name: res.name,
         url: res.url,
         owner: session.user.email,
-        index: parseInt(count)+1
+        index: parseInt(count)
       }
     });
 

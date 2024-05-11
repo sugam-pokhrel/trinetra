@@ -2,6 +2,9 @@ from pymongo import MongoClient
 from PIL import Image
 import requests
 from io import BytesIO
+import os
+
+
 
 # Replace the connection URI with your MongoDB Atlas connection string
 # Example URI format: "mongodb+srv://username:password@clustername.mongodb.net/dbname"
@@ -12,7 +15,9 @@ client = MongoClient(mongo_uri)
 
 # Connect to your database and collection
 db = client['test']  # Change 'your_database_name' to your actual database name
-collection = db['count']  # Change 'your_collection_name' to your actual collection name
+collection = db['count'] 
+newcoll=db['images']
+ # Change 'your_collection_name' to your actual collection name
 
 def get_collection_count():
     # Get the count of documents in the collection
@@ -35,10 +40,29 @@ def download_images_with_index_greater_than(count):
             print(f"Image '{name}' downloaded and saved.")
         else:
             print(f"Failed to download image for '{name}'")
-
 def main():
-    count = get_collection_count()
-    download_images_with_index_greater_than(count)
+    # Get all documents from the collection
+    documents = collection.find({"owner": "sugamf7@gmail.com"})
+    for document in documents:
+        # Print all properties of the document
+        print("Document properties:")
+        for key, value in document.items():
+            print(f"{key}: {value}")
+        print("\n")  # Add a newline for better readability
+    # download_images_with_index_greater_than(count)
 
 if __name__ == "__main__":
     main()
+def count_images_in_directory(directory):
+    # List all files in the directory
+    files = os.listdir(directory)
+    # Filter image files (you can add more extensions if needed)
+    image_files = [file for file in files if file.endswith(('.jpg', '.jpeg', '.png', '.gif', '.bmp'))]
+    # Count the number of image files
+    num_images = len(image_files)
+    return num_images
+
+# Directory containing the images
+image_dir = "./images"
+total_images = count_images_in_directory(image_dir)
+print("Total number of images:", total_images)
