@@ -8,7 +8,6 @@ import {
   ShieldQuestion,
   LogOut,
   Home,
-  HelpCircle,
 } from "lucide-react";
 import RightArrow from "../../../public/rightArrow.svg";
 import { motion } from "framer-motion";
@@ -31,11 +30,6 @@ const navlinks = [
     name: "Camera",
     icon: Camera,
     navlink: "/dashboard/camera",
-  },
-  {
-    name: "Help",
-    icon: HelpCircle,
-    navlink: "/dashboard/help",
   },
 ];
 
